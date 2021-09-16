@@ -19,6 +19,5 @@ parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, resultmerge=LOCAL_MEM, log=AL
         sigmaY = sqrt( m2Y*(m/(m-1.0)) );
         R[i,j] = cov(X,Y) / (sigmaX*sigmaY);
     }
-    R[i,] = R[i,]
 }
 write(R, $output);
