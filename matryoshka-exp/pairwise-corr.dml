@@ -9,15 +9,6 @@ R = matrix(0, rows=n, cols=n);
 #for( i in 1:(n-1) ) {
 #parfor( i in 1:(n-1) ) {
 parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, resultmerge=LOCAL_MEM, log=ALL ) {
-    X = D[ ,i];
-    m2X = centralMoment(X,2);
-    sigmaX = sqrt( m2X*(m/(m-1.0)) );
-    #for( j in (i+1):n ) {
-    parfor( j in (i+1):n ) {
-        Y = D[ ,j];
-        m2Y = centralMoment(Y,2);
-        sigmaY = sqrt( m2Y*(m/(m-1.0)) );
-        R[i,j] = cov(X,Y) / (sigmaX*sigmaY);
-    }
+    R[i,1]=42
 }
 write(R, $output);
