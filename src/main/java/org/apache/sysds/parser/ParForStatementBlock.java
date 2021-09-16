@@ -64,7 +64,7 @@ import org.apache.sysds.runtime.util.UtilFunctions;
  */
 public class ParForStatementBlock extends ForStatementBlock 
 {
-	private static final boolean LDEBUG = false; //internal local debug level
+	private static final boolean LDEBUG = true; //internal local debug level
 	protected static final Log LOG = LogFactory.getLog(ParForStatementBlock.class.getName());
 	
 	//external parameter names 
