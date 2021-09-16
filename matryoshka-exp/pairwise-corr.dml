@@ -6,7 +6,6 @@ D = read($input);
 m = nrow(D);
 n = ncol(D);
 R = matrix(0, rows=n, cols=n);
-R2 = matrix(0, rows=n, cols=n);
 #for( i in 1:(n-1) ) {
 #parfor( i in 1:(n-1) ) {
 parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, resultmerge=LOCAL_MEM, log=ALL ) {
@@ -20,7 +19,5 @@ parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, resultmerge=LOCAL_MEM, log=AL
         sigmaY = sqrt( m2Y*(m/(m-1.0)) );
         R[i,j] = cov(X,Y) / (sigmaX*sigmaY);
     }
-    R2[i,] = R[i,]
 }
-#write(R, $output);
-write(R2, $output);
+write(R, $output);
