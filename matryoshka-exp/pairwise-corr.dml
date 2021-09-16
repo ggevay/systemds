@@ -8,7 +8,7 @@ n = ncol(D);
 R = matrix(0, rows=n, cols=n);
 #for( i in 1:(n-1) ) {
 #parfor( i in 1:(n-1) ) {
-parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE ) {
+parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, resultmerge=LOCAL_MEM ) {
     X = D[ ,i];
     m2X = centralMoment(X,2);
     sigmaX = sqrt( m2X*(m/(m-1.0)) );
