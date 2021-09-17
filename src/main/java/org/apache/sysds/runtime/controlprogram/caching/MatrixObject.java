@@ -21,6 +21,7 @@ package org.apache.sysds.runtime.controlprogram.caching;
 
 import java.io.IOException;
 import java.lang.ref.SoftReference;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.Future;
 
@@ -109,6 +110,11 @@ public class MatrixObject extends CacheableData<MatrixBlock> {
 		_hdfsFileName = file;
 		_cache = null;
 		_data = null;
+		if (LOG.isTraceEnabled()) {
+			LOG.trace("MatrixObject ctor\n" +
+					"_hdfsFileName: " + file + "\n" +
+					Arrays.toString(Thread.currentThread().getStackTrace()));
+		}
 	}
 
 	/**
@@ -126,6 +132,11 @@ public class MatrixObject extends CacheableData<MatrixBlock> {
 		_hdfsFileName = file;
 		_cache = null;
 		_data = data;
+		if (LOG.isTraceEnabled()) {
+			LOG.trace("MatrixObject ctor\n" +
+					"_hdfsFileName: " + file + "\n" +
+					Arrays.toString(Thread.currentThread().getStackTrace()));
+		}
 	}
 
 	/**
