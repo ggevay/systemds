@@ -6,14 +6,12 @@ D = read($input);
 m = nrow(D);
 n = ncol(D);
 R = matrix(0, rows=n, cols=n);
-#for( i in 1:(n-1) ) {
-#parfor( i in 1:(n-1) ) {
-parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, resultmerge=LOCAL_MEM, log=ALL ) {
+parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, log=ALL ) {
     X = D[ ,i];
     m2X = centralMoment(X,2);
     sigmaX = sqrt( m2X*(m/(m-1.0)) );
     #for( j in (i+1):n ) {
-    parfor( j in (i+1):n ) {
+    parfor( j in (i+1):n, mode=LOCAL, opt=NONE, log=ALL ) {
         Y = D[ ,j];
         m2Y = centralMoment(Y,2);
         sigmaY = sqrt( m2Y*(m/(m-1.0)) );
