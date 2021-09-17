@@ -126,7 +126,8 @@ public class DMLConfig
 	{
 		_defaultVals = new HashMap<>();
 		_defaultVals.put(LOCAL_TMP_DIR,          "/tmp/systemds" );
-		_defaultVals.put(SCRATCH_SPACE,          "scratch_space" );
+		//_defaultVals.put(SCRATCH_SPACE,          "scratch_space" );
+		_defaultVals.put(SCRATCH_SPACE,          "hdfs://cloud-11:44000/user/ggevay/systemds/scratch_space" );
 		_defaultVals.put(OPTIMIZATION_LEVEL,     String.valueOf(OptimizerUtils.DEFAULT_OPTLEVEL.ordinal()) );
 		_defaultVals.put(DEFAULT_BLOCK_SIZE,     String.valueOf(OptimizerUtils.DEFAULT_BLOCKSIZE) );
 		_defaultVals.put(CP_PARALLEL_OPS,        "true" );
