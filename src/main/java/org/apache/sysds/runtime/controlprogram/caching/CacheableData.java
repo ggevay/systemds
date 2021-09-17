@@ -22,6 +22,7 @@ package org.apache.sysds.runtime.controlprogram.caching;
 import java.io.File;
 import java.io.IOException;
 import java.lang.ref.SoftReference;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -294,6 +295,12 @@ public abstract class CacheableData<T extends CacheBlock> extends Data
 	}
 
 	public synchronized void setFileName( String file ) {
+		if (LOG.isTraceEnabled()) {
+			LOG.trace("CacheableData.setFileName\n" +
+					"new: " + file + "\n" +
+					"old: " + _hdfsFileName + "\n" +
+					Arrays.toString(Thread.currentThread().getStackTrace()));
+		}
 		if( _hdfsFileName!=null && !_hdfsFileName.equals(file) )
 			if( !isEmpty(true) )
 				_dirtyFlag = true;
