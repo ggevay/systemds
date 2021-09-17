@@ -1583,6 +1583,13 @@ public class ParForProgramBlock extends ForProgramBlock
 
 	private String constructResultMergeFileName() {
 		String scratchSpaceLoc = ConfigurationManager.getScratchSpace();
+
+		if (LOG.isTraceEnabled()) {
+			LOG.trace("ParForProgramBlock.constructResultMergeFileName\n" +
+					"scratchSpaceLoc: " + scratchSpaceLoc + "\n" +
+					Arrays.toString(Thread.currentThread().getStackTrace()));
+		}
+
 		String fname = PARFOR_MR_RESULTMERGE_FNAME;
 		fname = fname.replaceAll("%ID%", String.valueOf(_ID)); //replace workerID
 		fname = fname.replaceAll("%VAR%", String.valueOf(_resultVarsIDSeq.getNextID()));
