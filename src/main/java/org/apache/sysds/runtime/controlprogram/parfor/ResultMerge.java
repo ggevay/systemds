@@ -26,6 +26,7 @@ import org.apache.sysds.runtime.instructions.InstructionUtils;
 import org.apache.sysds.runtime.matrix.operators.BinaryOperator;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public abstract class ResultMerge<T extends CacheableData<?>> implements Serializable
 {
@@ -52,6 +53,11 @@ public abstract class ResultMerge<T extends CacheableData<?>> implements Seriali
 		_inputs = in;
 		_outputFName = outputFilename;
 		_isAccum = accum;
+		if (LOG.isTraceEnabled()) {
+			LOG.trace("ResultMerge ctor\n" +
+					"_outputFName: " + _outputFName + "\n" +
+					Arrays.toString(Thread.currentThread().getStackTrace()));
+		}
 	}
 	
 	/**
