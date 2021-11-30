@@ -6,12 +6,12 @@ D = read($input);
 m = nrow(D);
 n = ncol(D);
 R = matrix(0, rows=n, cols=n);
-parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=NONE, log=ALL ) {
+parfor( i in 1:(n-1), mode=REMOTE_SPARK, opt=CONSTRAINED, log=ALL ) {
     X = D[ ,i];
     m2X = centralMoment(X,2);
     sigmaX = sqrt( m2X*(m/(m-1.0)) );
     #for( j in (i+1):n ) {
-    parfor( j in (i+1):n, mode=REMOTE_SPARK, opt=NONE, log=ALL ) {
+    parfor( j in (i+1):n, mode=REMOTE_SPARK, opt=CONSTRAINED, log=ALL ) {
         Y = D[ ,j];
         m2Y = centralMoment(Y,2);
         sigmaY = sqrt( m2Y*(m/(m-1.0)) );

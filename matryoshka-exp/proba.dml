@@ -1,0 +1,4 @@
+A = matrix("1 2 30", rows=3, cols=1)
+B = matrix("4 5 10", rows=3, cols=1)
+
+print(cov(A,B))
