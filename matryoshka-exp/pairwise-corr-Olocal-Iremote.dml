@@ -11,7 +11,7 @@ parfor( i in 1:(n-1), mode=LOCAL, opt=CONSTRAINED, log=ALL ) {
     m2X = centralMoment(X,2);
     sigmaX = sqrt( m2X*(m/(m-1.0)) );
     #for( j in (i+1):n ) {
-    parfor( j in (i+1):n, mode=REMOTE_SPARK, opt=CONSTRAINED, log=ALL ) {
+    parfor( j in (i+1):n, mode=REMOTE_SPARK, log=ALL ) {
         Y = D[ ,j];
         m2Y = centralMoment(Y,2);
         sigmaY = sqrt( m2Y*(m/(m-1.0)) );
