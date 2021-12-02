@@ -23,6 +23,7 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.sysds.conf.CompilerConfig.ConfigType;
 import org.apache.sysds.lops.Compression.CompressConfig;
 
+import java.util.Arrays;
 
 
 /**
@@ -71,6 +72,9 @@ public class ConfigurationManager
 	}
 	
 	public static void setCachedJobConf(JobConf job) {
+		System.out.println("GG ConfigurationManager.setCachedJobConf\n" +
+				"job: " + job + "\n" +
+				Arrays.toString(Thread.currentThread().getStackTrace()));
 		_rJob = job;
 	}
 	
