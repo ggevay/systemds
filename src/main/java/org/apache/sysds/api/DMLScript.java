@@ -610,6 +610,10 @@ public class DMLScript
 		}
 		sb.append("\n" + ANSI_RESET);
 		System.out.println(sb.toString());
+
+		System.out.println("=========== GG:");
+		e.printStackTrace(System.out);
+		System.out.println("===========");
 	}
 
 	private static void configureCodeGen() {
